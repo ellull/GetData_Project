@@ -2,14 +2,14 @@ library(reshape2)
 
 feature.names <- function(data_dir) {
     features.file <- paste(data_dir, "/features.txt", sep="")
-    read.table(features.file, col.names=c("id", "name"))$name
+    sub("\\.{2}$", "", sub("\\.{3}", ".", make.names(read.table(features.file, col.names=c("id", "name"))$name)))
 }
 
 read_data <- function(data_dir, data_set) {
     # Read the features and filter those that are not mean or standard deviation
     set.file <- paste(data_dir, "/", data_set, "/X_", data_set, ".txt", sep="")
     set <- read.table(set.file, col.names=feature.names(data_dir))
-    set <- set[, grep("\\.(mean|std)\\.\\.", names(set))]
+    set <- set[, grep("\\.(mean|std)(\\.|$)", names(set))]
 
     # Read the subject data
     subject.file <- paste(data_dir, "/", data_set, "/subject_", data_set, ".txt", sep="")
