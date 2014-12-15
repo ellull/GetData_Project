@@ -88,5 +88,5 @@ Magnitudes of the three-dimensional signals were calculated using the Euclidean 
 
 Summarization process
 =====================
-# From all the variables available on the raw data set, only the mean and standard deviation for each measurement were extracted
-# From the resulting occurrences the average of each variable for each activity and each subject was calculated resulting in 180 rows, one for each (activity, subject) pair (6 activities * 30 subjects = 180 rows)
+1. From all the variables available on the raw data set, only the mean and standard deviation for each measurement were extracted
+2. From the resulting occurrences the average of each variable for each activity and each subject was calculated resulting in 180 rows, one for each (activity, subject) pair (6 activities * 30 subjects = 180 rows)
