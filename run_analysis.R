@@ -1,8 +1,12 @@
 library(reshape2)
 
+# Get descriptive names from the features description file (with some tweaks :)
 feature.names <- function(data_dir) {
     features.file <- paste(data_dir, "/features.txt", sep="")
-    sub("\\.{2}$", "", sub("\\.{3}", ".", make.names(read.table(features.file, col.names=c("id", "name"))$name)))
+    names <- make.names(read.table(features.file, col.names=c("id", "name"))$name)
+    names <- sub("\\.{3}", ".", names)
+    names <- sub("\\.{2}$", "", names)
+    names <- sub("BodyBody", "Body", names)
 }
 
 read_data <- function(data_dir, data_set) {
